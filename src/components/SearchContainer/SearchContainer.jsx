@@ -41,7 +41,7 @@ function SearchContainer() {
       );
 
       if (customPokemon) {
-        setPokemons(prev => [...prev, customPokemon]);
+        setPokemons(prev => [...prev, customPokemon]); 
         return;
       }
 

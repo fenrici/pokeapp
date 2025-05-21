@@ -26,13 +26,6 @@ function PokemonForm() {
       ...values,
       [e.target.name]: e.target.value
     });
-    // Limpiar el error cuando el usuario empieza a escribir
-    if (errors[e.target.name]) {
-      setErrors(prev => ({
-        ...prev,
-        [e.target.name]: ''
-      }));
-    }
   };
 
   // Función para validar el formulario
@@ -66,29 +59,19 @@ function PokemonForm() {
   // Manejador del envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm()) return;
     
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-
     try {
-      addPokemon({
+      await addPokemon({
         id: parseInt(values.id),
         name: values.name.toLowerCase(),
         image: values.image,
         typeOne: values.typeOne,
         typeTwo: values.typeTwo || null
       });
-
       navigate('/');
-    } catch (error) {
-      setErrors({
-        submit: 'Error al crear el Pokemon. Por favor, inténtalo de nuevo.'
-      });
-    } finally {
-      setIsSubmitting(false);
+    } catch {
+      setErrors({ submit: 'Error al crear el Pokemon' });
     }
   };
 

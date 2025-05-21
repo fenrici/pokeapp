@@ -26,7 +26,7 @@ function PokemonDetails() {
           });
         } else {
           // Si no hay query params, es un pokemon de la API
-          const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
           setPokemon(response.data);
         }
       } catch (error) {
@@ -51,8 +51,8 @@ function PokemonDetails() {
     <div className="details-container">
       <div className="details-content">
         <div className="pokemon-header">
-          <img 
-            className="pokemon-image-large" 
+          <img
+            className="pokemon-image-large"
             src={pokemon.sprites?.front_default || pokemon.image} 
             alt={pokemon.name} 
           />
@@ -88,17 +88,17 @@ function PokemonDetails() {
                   <span className="stat-value">{stat.base_stat}</span>
                 </div>
               ))}
-              <div className="stat-item">
-                <div>Habilidades:</div>
-                <div className="ability-badges">
+            <div className="stat-item">
+              <div>Habilidades:</div>
+              <div className="ability-badges">
                   {pokemon.abilities.map(({ ability }) => (
                     <span key={ability.name} className="badge badge-purple">
                       {ability.name}
-                    </span>
-                  ))}
-                </div>
+                  </span>
+                ))}
               </div>
             </div>
+          </div>
           )}
         </div>
       </div>
@@ -106,4 +106,4 @@ function PokemonDetails() {
   );
 }
 
-export default PokemonDetails;
+export default PokemonDetails; 

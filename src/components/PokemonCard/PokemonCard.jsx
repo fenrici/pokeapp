@@ -32,18 +32,18 @@ function PokemonCard({ pokemon }) {
 
   return (
     <div className="pokemon-card" onClick={handleClick}>
-      <img 
-        className="pokemon-image" 
+        <img
+          className="pokemon-image"
         src={pokemon.sprites?.front_default || pokemon.image} 
-        alt={pokemon.name} 
-      />
-      <h2 className="pokemon-name">{pokemon.name}</h2>
+          alt={pokemon.name}
+        />
+        <h2 className="pokemon-name">{pokemon.name}</h2>
       <div className="type-badges">
         {getTypes().map((type, index) => (
           <span key={index} className="badge badge-teal">
-            {type}
-          </span>
-        ))}
+              {type}
+            </span>
+          ))}
       </div>
     </div>
   );
